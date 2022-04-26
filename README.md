@@ -8,6 +8,11 @@
 ### 2. 지역 즐겨찾기 기능 - firebase 사용
 ### 3. 날씨 & 기록 기능 - firebase 사용
 
+## firebase
+### https://openweathermap.org/
+## Geolocation
+### https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API
+
 ## 모듈 의존성 다이어그램(ESM)
 ### Weather : 기본 날씨 보여주는 화면
 ### ListWeather : 날씨 & 기록 리스트 보여주는 화면

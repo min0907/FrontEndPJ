@@ -1,11 +1,14 @@
 body {
   height:100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: linear-gradient(rgb(47,150,163),rgb(48,62,143));
   font-family: sans-serif;
   color: white;
+}
+.weather-container{
+  width: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .location,
 .temperature-value {
@@ -36,6 +39,11 @@ body {
 .temperature-description{
   font-size: 25px;
 }
+.weather-week{
+  display: flex;
+  width: 50vh;
+}
+
 .
 
 

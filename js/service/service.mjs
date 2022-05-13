@@ -91,3 +91,18 @@ export class getWeather{
       })
   }
 }
+export class saveWeather{
+  displayWeather(){
+    const weatherList=[
+      {weather:30, date:20220512},
+      {weather:29, date:20220512},
+      {weather:28, date:20220512}
+    ]
+    const weather=document.querySelector(".weatherList");
+    for (let i=0;i<weatherList.length;i++){
+      weather.innerHTML=weather.innerHTML+`<li>${JSON.stringify(weatherList[i])}</li>`+`<button>x</button>`
+    }
+  }
+
+
+}

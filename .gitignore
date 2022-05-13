@@ -6,4 +6,4 @@ dist
 .cache
 
 # Resource Files #
-js/view/ListWeatherView.mjs
+apikey.js

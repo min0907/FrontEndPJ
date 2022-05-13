@@ -1,4 +1,10 @@
+import {getDatabase, onValue, ref, set} from "firebase/database";
+import {WeatherModel} from "../model/WeatherModel.mjs";
+
 export class getWeather{
+  constructor() {
+    this.model=new WeatherModel();
+  }
   requestCoords() {
     // navigator.geolocation.getCurrentPosition(handleGeoSucc,handleGeoErr);
     navigator.geolocation.getCurrentPosition((position)=>{
@@ -21,14 +27,17 @@ export class getWeather{
       })
       .then((data)=>{
         console.log(data);
-        let weather={};
-        weather.value = Math.floor(data.main.temp);
-        weather.description = data.weather[0].description;
-        weather.iconId = data.weather[0].icon;
-        weather.city = data.name;
-        weather.country = data.sys.country;
+        let m=this.model.setModel(Math.floor(data.main.temp),data.weather[0].description,data.weather[0].icon,data.name,data.sys.country);
+        console.log('model',JSON.stringify(m));
+        let weather=m;
+        // let weather={};
+        // weather.value = Math.floor(data.main.temp);
+        // weather.description = data.weather[0].description;
+        // weather.iconId = data.weather[0].icon;
+        // weather.city = data.name;
+        // weather.country = data.sys.country;
         // console.log(this.weather);
-        console.log(weather);
+        // console.log(weather);
         return weather;
       })
       .then((weather)=>{
@@ -92,16 +101,34 @@ export class getWeather{
   }
 }
 export class saveWeather{
-  displayWeather(){
-    const weatherList=[
-      {weather:30, date:20220512},
-      {weather:29, date:20220512},
-      {weather:28, date:20220512}
-    ]
-    const weather=document.querySelector(".weatherList");
-    for (let i=0;i<weatherList.length;i++){
-      weather.innerHTML=weather.innerHTML+`<li>${JSON.stringify(weatherList[i])}</li>`+`<button>x</button>`
-    }
+  writeData(id,date,weather){
+    const db=getDatabase();
+    set(ref(db,'weather/'+id),{
+      date:date,
+      weather: weather,
+    });
+  }
+  // displayWeather(){
+  //   const weatherList=[
+  //     {weather:30, date:20220512},
+  //     {weather:29, date:20220512},
+  //     {weather:28, date:20220512}
+  //   ]
+  //   const weather=document.querySelector(".weatherList");
+  //   for (let i=0;i<weatherList.length;i++){
+  //     weather.innerHTML=weather.innerHTML+`<li>${JSON.stringify(weatherList[i])}</li>`+`<button>x</button>`
+  //   }
+  // }
+  readData(){
+    const db=getDatabase();
+    onValue(ref(db,'weather/'),(snapshot)=>{
+      const data = snapshot.val();
+      const weather=document.querySelector(".weatherList");
+      for (let i=0;i<data.length;i++){
+        weather.innerHTML=weather.innerHTML+`<li>${JSON.stringify(data[i])}</li>`
+      }
+      console.log(data);
+    })
   }
 
 

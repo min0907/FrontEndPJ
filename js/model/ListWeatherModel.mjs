@@ -6,15 +6,7 @@ import { getDatabase , ref, set, onValue} from "firebase/database";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyAYX3wSmlXM7HXWpqldSCP3YHhjHqMUZkc",
-  authDomain: "fir-weather-fa238.firebaseapp.com",
-  projectId: "fir-weather-fa238",
-  storageBucket: "fir-weather-fa238.appspot.com",
-  messagingSenderId: "329698634289",
-  appId: "1:329698634289:web:7323a3f63bd857c4e90310",
-  measurementId: "G-XKFB98EFSZ"
-};
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

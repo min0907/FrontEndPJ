@@ -10,6 +10,7 @@
 
 ## firebase
 ### https://openweathermap.org/
+#### * firebase에서 앱 생성 후 sdk 다운로드 받아서 firebaseConfig로 적용하면 사용 가능
 ## Geolocation
 ### https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API
 

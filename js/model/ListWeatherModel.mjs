@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase , ref, set, onValue} from "firebase/database";
-import {firebaseConfig} from 'apikey.js'
+import {firebaseConfig} from "../../apikey.js";
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,22 +14,9 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 export class ListWeatherModel{
-
-
-writeData(id,date,weather){
-  const db=getDatabase();
-  set(ref(db,'weather/'+id),{
-    date:date,
-    temp: weather,
-  });
-}
-readDate(id){
-  const db=getDatabase();
-  onValue(ref(db,'weather/'+id),(snapshot)=>{
-    const data = snapshot.val();
-    console.log(data);
-  })
-}
+  setListModel(){
+    return new Date().toString();
+  }
 }
 
 

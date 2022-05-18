@@ -20,12 +20,7 @@ export class ListWeatherView {
       this.weatherList.append(li);
     });
   }
-  DeletWeather(handler){
-    this.weatherList.addEventListener('click',event=>{
-      if(event.target.className==='delete'){
-        const id=event.target.parentElement.id;
-        handler(id);
-      }
-    })
+  findElementValue(className){
+    return document.getElementsByClassName(className);
   }
 }

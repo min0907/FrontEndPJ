@@ -43,7 +43,10 @@ body {
   display: flex;
   width: 50vh;
 }
-
+.weather-list{
+  background-color: skyblue;
+  border-color: black;
+}
 .
 
 

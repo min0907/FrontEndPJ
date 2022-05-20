@@ -1,6 +1,10 @@
 import {getDatabase, onValue, ref, set,remove} from "firebase/database";
 import {WeatherModel} from "../model/WeatherModel.mjs";
 import {weatherAPI} from "../../apikey.js";
+import { initializeApp } from "firebase/app";
+import {firebaseConfig} from "../../apikey.js";
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 export class getWeather{
   constructor() {
     this.model=new WeatherModel();

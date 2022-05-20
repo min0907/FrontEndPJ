@@ -27,32 +27,28 @@ export class controller{
        if(temp[0].innerText!="- °C"){
          this.saveWeather.writeData(data, new Date().toString(),temp[0].innerText);
          console.log("success save!!");
+         location.reload();
        }else if(temp[0].innerText=="- °C"){
          alert("날씨가 화면에 나타난 후 저장해주세요!");
        }
      }))
-    // const db=getDatabase()
-    // let num;
-    // onValue(ref(db, 'weather/'),(snapshot)=> {
-    //   num = snapshot.toJSON()
-    //   console.log(Object.keys(num).length);
-    // },{onlyOnce:true
-    // });
-   // console.log("checkNumData",disWeather.checkNumData());
-   //    saveBtn.addEventListener("click", () => {
-   //      // let id=disWeather.readData();
-   //      let temp = listView.findElementValue("temperature-value")
-   //      console.log("temp:::", temp[0].innerText);
-   //      if(temp[0].innerText!="- °C"){
-   //        this.saveWeather.writeData(Object.keys(num).length, new Date().toString(),temp[0].innerText);
-   //      }else if(temp[0].innerText=="- °C"){
-   //        alert("날씨가 화면에 나타난 후 저장해주세요!");
-   //      }
-   //    })
-
   }
+  registerRemove(){
+    // console.log(listView.findAllElement(".removeData"));
+    let that=this;
+    listView.findAllElement(".removeData").forEach(item=>{
+      item.addEventListener('click',function (){
+        console.log(this.id);
+        disWeather.removeData(this.id)
+        location.reload();
+      })
+    })
+  }
+
   displayList(){
-    this.saveWeather.readData();
+    this.saveWeather.readData().then((data)=>{
+      listView.readSavedWeather(data)
+    }).then(this.registerRemove);
   }
 }
 

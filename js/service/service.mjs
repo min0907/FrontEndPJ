@@ -1,17 +1,17 @@
-import {getDatabase, onValue, ref, set,get,child} from "firebase/database";
+import {getDatabase, onValue, ref, set,remove} from "firebase/database";
 import {WeatherModel} from "../model/WeatherModel.mjs";
-
+import {weatherAPI} from "../../apikey.js";
 export class getWeather{
   constructor() {
     this.model=new WeatherModel();
   }
-  getWeatherAPI(){  //API_KEY = bdab0099b7b556d38af96f7adcc089f3
+  getWeatherAPI(){
     return new Promise((resolve,reject)=>{
     navigator.geolocation.getCurrentPosition((position) => {
       let lat=position.coords.latitude;
       let lon=position.coords.longitude;
         fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=bdab0099b7b556d38af96f7adcc089f3&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI.apikey}&units=metric`
         )
           .then((response)=>{
             console.log(response);
@@ -68,17 +68,14 @@ export class saveWeather {
 
   readData() {
     const db = getDatabase();
+    return new Promise((resolve,reject)=> {
       onValue(ref(db, 'weather/'), (snapshot) => {
         let data = snapshot.val();
-        const weather = document.querySelector(".weatherList");
-        weather.innerHTML = '';
-        console.log("check",data);
-        for (let i = 0; i < data.length; i++) {
-          weather.innerHTML = weather.innerHTML + `<li class="weather-list">저장 일시:${JSON.stringify(data[i].date)} 온도:${JSON.stringify(data[i].temp)}</li>`
-        }
-        console.log("nn", data);
-        return Object.keys(snapshot.toJSON()).length;
+
+        console.log("check", data);
+        resolve(data);
       })
+    })
   }
   checkNumData() {
     const db = getDatabase();
@@ -88,6 +85,11 @@ export class saveWeather {
         resolve(Object.keys(snapshot.toJSON()).length);
       })
     })
+  }
+  removeData(id){
+    const db = getDatabase();
+    console.log(id);
+    remove(ref(db, 'weather/' + id))
   }
 }
 

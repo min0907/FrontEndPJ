@@ -1,13 +1,12 @@
 export class ListWeatherView {
-  constructor() {
-    this.weatherList=this.createElement('ul','weather-list');
+  findElement(name){
+    return document.querySelector(name);
   }
-  createElement(tag, className) {
-    const element = document.createElement(tag);
-
-    if (className) element.classList.add(className);
-
-    return element;
+  findAllElement(name){
+    return document.querySelectorAll(name);
+  }
+  findId(id){
+    return document.getElementById(id)
   }
   displayWeather(weathers){
     const deleteButton = this.createElement('button', 'delete');
@@ -22,5 +21,13 @@ export class ListWeatherView {
   }
   findElementValue(className){
     return document.getElementsByClassName(className);
+  }
+  readSavedWeather(data){
+    const weather = document.querySelector(".weatherList");
+    weather.innerHTML = '';
+    for (let i = 0; i < data.length; i++) {
+      weather.innerHTML = weather.innerHTML + `<li class="weather-list">저장 일시:${JSON.stringify(data[i].date)} 온도:${JSON.stringify(data[i].temp)}</li>
+<button class="removeData" id=${i}> X </button>`
+    }
   }
 }

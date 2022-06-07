@@ -1,4 +1,4 @@
-import {getDatabase, onValue, ref, set,remove} from "firebase/database";
+import {getDatabase, onValue, ref, set,remove,child,get} from "firebase/database";
 import {WeatherModel} from "../model/WeatherModel.mjs";
 import {weatherAPI} from "../../apikey.js";
 import { initializeApp } from "firebase/app";
@@ -9,11 +9,8 @@ export class getWeather{
   constructor() {
     this.model=new WeatherModel();
   }
-  getWeatherAPI(){
+  getWeatherAPI(lat,lon){
     return new Promise((resolve,reject)=>{
-    navigator.geolocation.getCurrentPosition((position) => {
-      let lat=position.coords.latitude;
-      let lon=position.coords.longitude;
         fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI.apikey}&units=metric`
         )
@@ -30,13 +27,9 @@ export class getWeather{
             resolve(weather);
           })
       })
-      })
   }
-  getWeekWeatherAPI(){
+  getWeekWeatherAPI(lat,lon){
     return new Promise((resolve,reject)=> {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
         fetch(
           `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=bdab0099b7b556d38af96f7adcc089f3&units=metric`
         )
@@ -57,7 +50,6 @@ export class getWeather{
             resolve(weather_week);
           })
       })
-    })
   }
 }
 export class saveWeather {
@@ -71,15 +63,24 @@ export class saveWeather {
   }
 
   readData() {
-    const db = getDatabase();
-    return new Promise((resolve,reject)=> {
-      onValue(ref(db, 'weather/'), (snapshot) => {
-        let data = snapshot.val();
-
-        console.log("check", data);
-        resolve(data);
+    const db = ref(getDatabase());
+    return new Promise((resolve,reject)=>{
+      get(child(db,'weather/')).then((snapshot)=>{
+        if(snapshot.exists()) {
+          let data = snapshot.val();
+          console.log(data);
+          resolve(data)
+        }
       })
     })
+    // return new Promise((resolve,reject)=> {
+    //   onValue(ref(db, 'weather/'), (snapshot) => {
+    //     let data = snapshot.val();
+    //
+    //     console.log("check", data);
+    //     resolve(data);
+    //   })
+    // })
   }
   checkNumData() {
     const db = getDatabase();
@@ -92,7 +93,7 @@ export class saveWeather {
   }
   removeData(id){
     const db = getDatabase();
-    console.log(id);
+    console.log("삭제 id",id);
     remove(ref(db, 'weather/' + id))
   }
 }

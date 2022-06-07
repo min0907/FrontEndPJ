@@ -9,14 +9,15 @@
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
     "start": "npm run build && npm run dev",
-    "test": "mocha js/test/test.spec.js -r @babel/register"
+    "test": "mocha js/test/test.spec.js -r @babel/register -exit"
   },
   "devDependencies": {
     "@babel/core": "^7.17.12",
     "@babel/plugin-transform-runtime": "^7.17.10",
     "@babel/register": "^7.14.5",
     "mocha": "^10.0.0",
-    "node-fetch": "^3.2.4",
+    "nock": "^13.2.4",
+    "node-fetch": "^2.6.7",
     "parcel-bundler": "^1.12.4",
     "regenerator-runtime": "^0.13.9"
   },

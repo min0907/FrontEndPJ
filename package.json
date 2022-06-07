@@ -9,7 +9,7 @@
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
     "start": "npm run build && npm run dev",
-    "test": "mocha js/test/test.spec.js -r @babel/register -exit"
+    "test": "mocha test.spec.js -r @babel/register -exit"
   },
   "devDependencies": {
     "@babel/core": "^7.17.12",

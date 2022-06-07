@@ -39,7 +39,7 @@ npm test
 ### firebase 실행 방법
 #### firebase에서 앱 생성 후 sdk 다운로드 받아서 다음과 같이 적용
 #### 파일 경로 : root에 apikey.js 생성
-```
+```javascript
 export const firebaseConfig = {
   apiKey: "",
   authDomain: "",
@@ -56,7 +56,7 @@ export const firebaseConfig = {
 ### openweatherAPI
 #### openweatherAPI 에서 apikey 다운로드 받아서 apikey.js에 저장
 #### 파일 경로 : root에 apikey.js 생성
-```
+```javascript
 export const weatherAPI={
   apikey:""
 }

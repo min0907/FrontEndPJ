@@ -1,6 +1,6 @@
 import {getWeather,saveWeather} from "../js/service/service.mjs";
 // import {weatherAPI} from "../../apikey.js";
-import data from "../test.json"
+import data from "./ExpectedWeatherResponse.json"
 const nock = require('nock')
 
 // import {initializeApp} from "firebase/app";

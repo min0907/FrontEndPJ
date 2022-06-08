@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import {initializeApp} from "firebase/app";
 import {firebaseConfig} from "../../apikey.js";
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
@@ -11,8 +11,8 @@ import {firebaseConfig} from "../../apikey.js";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export class ListWeatherModel{
-  setListModel(){
+export class ListWeatherModel {
+  setListModel() {
     return new Date().toString();
   }
 

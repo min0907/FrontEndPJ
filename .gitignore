@@ -4,6 +4,7 @@
 node_modules
 dist
 .cache
+.idea
 
 # Resource Files #
 apikey.js

@@ -1,15 +1,17 @@
 body {
-  height:100vh;
-  background: linear-gradient(rgb(47,150,163),rgb(48,62,143));
+  height: 100vh;
+  background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
   font-family: sans-serif;
   color: white;
 }
-.weather-container{
+
+.weather-container {
   width: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .location,
 .temperature-value {
   height: 30vh;
@@ -19,34 +21,42 @@ body {
   align-items: center;
   font-size: 1.5rem;
 }
+
 .temperature-value {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-.temperature-value span{
+
+.temperature-value span {
   margin: 10px;
   font-size: 30px;
 }
-.temperature-value p{
+
+.temperature-value p {
   font-size: 40px;
 }
-.weather-icon{
+
+.weather-icon {
   width: 128px;
   height: 128px;
   float: right;
 }
-.temperature-description{
+
+.temperature-description {
   font-size: 25px;
 }
-.weather-week{
+
+.weather-week {
   display: flex;
   width: 50vh;
 }
-.weather-list{
+
+.weather-list {
   background-color: skyblue;
   border-color: black;
 }
+
 .
 
 

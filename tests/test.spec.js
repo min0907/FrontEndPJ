@@ -1,6 +1,7 @@
-import {getWeather,saveWeather} from "../js/service/service.mjs";
+import {weatherService, saveWeather} from "../js/service/service.mjs";
 // import {weatherAPI} from "../../apikey.js";
 import data from "./ExpectedWeatherResponse.json"
+
 const nock = require('nock')
 
 // import {initializeApp} from "firebase/app";
@@ -9,24 +10,25 @@ const nock = require('nock')
 // const database = getDatabase(app);
 // import {firebaseConfig} from "../../apikey";
 import fetch from "node-fetch";
+
 globalThis.fetch = fetch
-let test=new getWeather();
-let test2=new saveWeather();
-describe('unit test 1',function() {
-  before(function(){
+let test = new weatherService();
+let test2 = new saveWeather();
+describe('unit test 1', function () {
+  before(function () {
     nock('https://api.openweathermap.org/data/2.5/weather?lat=36.7796&lon=127.1376&appid=bdab0099b7b556d38af96f7adcc089f3&units=metric')
       .get('')
-      .reply(200,data);
+      .reply(200, data);
   });
   it('현재 날씨 가져오기', function (done) {
-    test.getWeatherAPI(36.7796,127.1376).then(()=>
+    test.getWeatherAPI(36.7796, 127.1376).then(() =>
       done())
-      .catch(err=>{
+      .catch(err => {
         done(err)
-        console.log('err:'+err)
+        console.log('err:' + err)
       })
-    })
-  after(function(){
+  })
+  after(function () {
     nock.cleanAll()
   })
 });

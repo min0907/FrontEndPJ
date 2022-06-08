@@ -1,46 +1,46 @@
 {
-  "coord":{
-    "lon":127.1376,
-    "lat":36.7796
+  "coord": {
+    "lon": 127.1376,
+    "lat": 36.7796
   },
-  "weather":[
+  "weather": [
     {
-      "id":800,
-      "main":"Clear",
-      "description":"clear sky",
-      "icon":"01d"
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01d"
     }
   ],
-  "base":"stations",
-  "main":{
-    "temp":22.97,
-    "feels_like":22.5,
-    "temp_min":22.9,
-    "temp_max":24.16,
-    "pressure":1012,
-    "humidity":45,
-    "sea_level":1012,
-    "grnd_level":1009
+  "base": "stations",
+  "main": {
+    "temp": 22.97,
+    "feels_like": 22.5,
+    "temp_min": 22.9,
+    "temp_max": 24.16,
+    "pressure": 1012,
+    "humidity": 45,
+    "sea_level": 1012,
+    "grnd_level": 1009
   },
-  "visibility":10000,
-  "wind":{
-    "speed":2.39,
-    "deg":264,
-    "gust":3.65
+  "visibility": 10000,
+  "wind": {
+    "speed": 2.39,
+    "deg": 264,
+    "gust": 3.65
   },
-  "clouds":{
-    "all":6
+  "clouds": {
+    "all": 6
   },
-  "dt":1653270853,
-  "sys":{
-    "type":1,
-    "id":8090,
-    "country":"KR",
-    "sunrise":1653250726,
-    "sunset":1653302272
+  "dt": 1653270853,
+  "sys": {
+    "type": 1,
+    "id": 8090,
+    "country": "KR",
+    "sunrise": 1653250726,
+    "sunset": 1653302272
   },
-  "timezone":32400,
-  "id":1845759,
-  "name":"Cheonan",
-  "cod":200
+  "timezone": 32400,
+  "id": 1845759,
+  "name": "Cheonan",
+  "cod": 200
 }

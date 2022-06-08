@@ -55,26 +55,28 @@
   display: none;
 }
 
-.burger-check:checked~.menu {
+.burger-check:checked ~ .menu {
   max-width: 300px;
 }
 
-.burger-check:checked~.burger-icon .burger-sticks {
+.burger-check:checked ~ .burger-icon .burger-sticks {
   background: transparent;
 }
 
-.burger-check:checked~.burger-icon .burger-sticks:before {
+.burger-check:checked ~ .burger-icon .burger-sticks:before {
   transform: rotate(-45deg);
 }
 
-.burger-check:checked~.burger-icon .burger-sticks:after {
+.burger-check:checked ~ .burger-icon .burger-sticks:after {
   transform: rotate(45deg);
 }
 
-.burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
-.burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+.burger-check:checked ~ .burger-icon:not(.steps) .burger-sticks:before,
+.burger-check:checked ~ .burger-icon:not(.steps) .burger-sticks:after {
   top: 0;
 }
 
-ul{list-style:none;}
+ul {
+  list-style: none;
+}
 

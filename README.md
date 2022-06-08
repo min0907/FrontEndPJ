@@ -28,7 +28,7 @@ graph TD;
     main.js-->controller;
     controller-->service;
     controller-->WeatherView;
-    controller-->listWeatherView;
+    controller-->ListWeatherView;
     service-->WeatherModel;
     service-->ListWeatherModel;
     service-->firebase;

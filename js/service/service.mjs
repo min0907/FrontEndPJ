@@ -24,7 +24,6 @@ export class weatherService {
           console.log(data);
           let m = this.model.setModel(Math.floor(data.main.temp), data.weather[0].description, data.weather[0].icon, data.name, data.sys.country);
           console.log('model', JSON.stringify(m));
-          console.log("1");
           let weather = m;
           resolve(weather);
         })

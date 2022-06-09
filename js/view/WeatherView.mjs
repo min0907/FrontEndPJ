@@ -9,7 +9,6 @@ export class View {
     })
   }
   setWeather(weather) {
-    console.log("3")
     const iconElement = this.findElement(".weather-icon");
     const tempElement = this.findElement(".temperature-value p");
     const descElement = this.findElement(".temperature-description p");

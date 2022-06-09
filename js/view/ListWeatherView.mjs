@@ -7,10 +7,6 @@ export class ListWeatherView {
     return document.querySelectorAll(name);
   }
 
-  findId(id) {
-    return document.getElementById(id)
-  }
-
   findElementValue(className) {
     return document.getElementsByClassName(className);
   }

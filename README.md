@@ -25,7 +25,7 @@ https://openweathermap.org/
 
 ## firebase
 
-https://openweathermap.org/
+https://firebase.google.com/firebase
 
 ## Geolocation
 

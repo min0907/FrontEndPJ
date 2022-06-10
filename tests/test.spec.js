@@ -41,7 +41,7 @@ describe('unit test 2', function () {
   it('일주일 날씨 가져오기', function (done) {
     service.getWeekWeatherAPI(36.7796, 127.1376).then(response => {
       assert.equal(response.length, 8)
-      assert.equal(response[0].temperature, 21)
+      assert.equal(response[0].temperature, 24)
       assert.equal(response[0].weathericon, '10d')
       done()
     }).catch(err => {

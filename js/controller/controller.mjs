@@ -1,8 +1,8 @@
-import {weatherService} from "../service/service.mjs";
+import {WeatherService} from "../service/service.mjs";
 import {View} from "../view/WeatherView.mjs";
 import {ListWeatherView} from "../view/ListWeatherView.mjs";
 
-const service = new weatherService();
+const service = new WeatherService();
 const view = new View();
 const listView = new ListWeatherView();
 

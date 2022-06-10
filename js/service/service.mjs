@@ -1,58 +1,46 @@
-import {getDatabase, onValue, ref, set, remove, child, get} from "firebase/database";
+import {child, get, getDatabase, onValue, ref, remove, set} from "firebase/database";
 import {WeatherModel} from "../model/WeatherModel.mjs";
-import {weatherAPI} from "../../apikey.js";
+import {firebaseConfig, weatherAPI} from "../../apikey.js";
 import {initializeApp} from "firebase/app";
-import {firebaseConfig} from "../../apikey.js";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export class weatherService {
+export class WeatherService {
   constructor() {
     this.model = new WeatherModel();
   }
 
   getWeatherAPI(lat, lon) {
-    return new Promise((resolve, reject) => {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI.apikey}&units=metric`
-      )
-        .then((response) => {
-          console.log(response);
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          let m = this.model.setModel(Math.floor(data.main.temp), data.weather[0].description, data.weather[0].icon, data.name, data.sys.country);
-          console.log('model', JSON.stringify(m));
-          let weather = m;
-          resolve(weather);
-        })
-    })
+    return fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherAPI.apikey}&units=metric`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        return this.model.setModel(Math.floor(data.main.temp), data.weather[0].description, data.weather[0].icon, data.name, data.sys.country);
+      })
   }
 
   getWeekWeatherAPI(lat, lon) {
-    return new Promise((resolve, reject) => {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=bdab0099b7b556d38af96f7adcc089f3&units=metric`
-      )
-        .then((response) => {
-          console.log(response);
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          let weather_week = [];
-          for (let i = 0; i < data.daily.length; i++) {
-            let arr = {};
-            arr.temperature = Math.floor(data.daily[i].temp.eve);
-            arr.weathericon = data.daily[i].weather[0].icon;
-            weather_week.push(arr);
-          }
-          console.log(weather_week);
-          resolve(weather_week);
-        })
-    })
+    return fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=bdab0099b7b556d38af96f7adcc089f3&units=metric`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let weatherWeek = [];
+        for (let i = 0; i < data.daily.length; i++) {
+          let arr = {};
+          arr.temperature = Math.floor(data.daily[i].temp.eve);
+          arr.weathericon = data.daily[i].weather[0].icon;
+          weatherWeek.push(arr);
+        }
+        return weatherWeek
+      })
   }
+
   writeData(id, date, temp) {
     const db = getDatabase();
     console.log(id, date, temp);
@@ -91,5 +79,6 @@ export class weatherService {
     remove(ref(db, 'weather/' + id))
   }
 }
+
 
 
